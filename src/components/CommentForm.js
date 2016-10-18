@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 class CommentForm extends Component {
   constructor(props) {
@@ -48,5 +48,8 @@ class CommentForm extends Component {
   }
 }
 
+CommentForm.propTypes = {
+  addComment: PropTypes.func.isRequired
+}
 
 export default CommentForm

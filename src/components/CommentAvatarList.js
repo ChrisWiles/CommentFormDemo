@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 class CommentAvatarList extends Component {
   render() {
@@ -18,6 +18,10 @@ class CommentAvatarList extends Component {
       </div>
     )
   }
+}
+
+CommentAvatarList.propTypes = {
+  avatars: PropTypes.array.isRequired
 }
 
 export default CommentAvatarList

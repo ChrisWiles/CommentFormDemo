@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import CommentRemoveConfirmation from './CommentRemoveConfirmation'
 
 class Comment extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       isAbusive: false
@@ -15,9 +15,10 @@ class Comment extends Component {
   render() {
 
     let commentBody
+    const {body, author, avatarUrl} = this.props
 
     if (!this.state.isAbusive) {
-      commentBody = this.props.body
+      commentBody = body
     } else {
       commentBody = <em>Content marked as abusive</em>
     }
@@ -25,9 +26,9 @@ class Comment extends Component {
     return(
       <div className="comment">
 
-        <img src={this.props.avatarUrl} alt={`${this.props.author}'s`} />
+        <img src={avatarUrl} alt={`${author}'s`} />
 
-        <p className="comment-header">{this.props.author}</p>
+        <p className="comment-header">{author}</p>
         <p className="comment-body">{commentBody}</p>
 
         <div className="comment-actions">
@@ -49,6 +50,14 @@ class Comment extends Component {
   _handleDelete() {
     this.props.onDelete(this.props.id)
   }
+}
+
+Comment.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  author: PropTypes.string.isRequired,
+  avatarUrl:  PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  body: PropTypes.node.isRequired
 }
 
 export default Comment

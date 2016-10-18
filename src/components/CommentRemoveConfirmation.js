@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 class CommentRemoveConfirmation extends Component {
   constructor() {
@@ -45,6 +45,10 @@ class CommentRemoveConfirmation extends Component {
     e.preventDefault()
     this.props.onDelete()
   }
+}
+
+CommentRemoveConfirmation.propTypes = {
+  onDelete: PropTypes.func.isRequired
 }
 
 export default CommentRemoveConfirmation
