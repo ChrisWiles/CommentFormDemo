@@ -81,15 +81,17 @@ class App extends Component {
 
     _addComment(commentAuthor, commentBody) {
 
+      const {comments} = this.state
+
       const comment = {
-        id: this.state.comments.length + 1,
+        id: comments.length + 1,
         author: commentAuthor,
         body: commentBody,
         avatarUrl: 'assets/images/avatars/avatar-default.png'
       }
 
       this.setState({
-        comments: this.state.comments.concat([comment])
+        comments: comments.concat([comment])
       })
 
     }
