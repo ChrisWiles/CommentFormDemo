@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import CommentForm from './CommentForm'
 import CommentAvatarList from './CommentAvatarList'
 import Comment from './Comment'
-import jQuery from "jquery"
+import axios from "axios"
 import './App.css'
 
 class App extends Component {
@@ -95,19 +95,14 @@ class App extends Component {
     }
 
     _fetchComments() {
-      jQuery.ajax({
-        method: 'GET',
-        url: 'comments.json',
-        success: (comments) => {
-          this.setState({ comments })
-        }
-      })
+      axios.get('comments.json')
+        .then(comments => this.setState({comments: comments.data}))
+        .catch(err => console.log(err))
     }
 
     _deleteComment(commentID) {
-      const comments = this.state.comments.filter(
-        comment => comment.id !== commentID
-      )
+      const comments = this.state.comments
+        .filter(comment => comment.id !== commentID)
 
       this.setState({ comments })
     }
