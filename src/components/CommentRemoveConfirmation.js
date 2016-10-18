@@ -12,9 +12,6 @@ class CommentRemoveConfirmation extends Component {
   }
 
   render() {
-
-    let confirmNode
-
     if (this.state.showConfirm) {
       return (
         <span>
@@ -22,14 +19,12 @@ class CommentRemoveConfirmation extends Component {
         </span>
       )
     } else {
-      confirmNode = <a href="" onClick={this._toggleConfirmMessage}>Delete comment?</a>
+      return (
+        <span>
+          <a href="" onClick={this._toggleConfirmMessage}>Delete comment?</a>
+        </span>
+      )
     }
-
-    return (
-      <span>
-        {confirmNode}
-      </span>
-    )
   }
 
   _toggleConfirmMessage(e) {
